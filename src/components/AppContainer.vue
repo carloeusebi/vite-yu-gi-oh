@@ -14,13 +14,17 @@ export default {
 
 <template>
 	<div class="container">
-		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-5">
-			<AppPokeCard
-				v-for="pokemon in pokemons"
-				:key="pokemon.id"
-				:img="pokemon.imageUrl"
-				:name="pokemon.name"
-				:type="pokemon.type" />
+		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 gy-5">
+			<div
+				class="col"
+				v-for="pokemon in pokemons">
+				<AppPokeCard
+					:key="pokemon.id"
+					:id="pokemon.number"
+					:img="pokemon.imageUrl"
+					:name="pokemon.name"
+					:type="pokemon.type1.toLowerCase()" />
+			</div>
 		</div>
 	</div>
 </template>
