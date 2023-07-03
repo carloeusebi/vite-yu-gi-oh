@@ -1,0 +1,6 @@
+@use './vars' as *;
+@use 'bootstrap/scss/bootstrap';
+
+body {
+	background-color: $background;
+}
