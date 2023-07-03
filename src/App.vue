@@ -29,7 +29,7 @@ export default {
 
 	components: { AppContainer, AppHeader },
 
-	mounted() {
+	created() {
 		fetchPokemons();
 	},
 };
