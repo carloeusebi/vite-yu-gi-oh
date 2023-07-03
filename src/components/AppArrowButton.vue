@@ -14,8 +14,14 @@ export default {
 	},
 
 	computed: {
-		isVisible() {
+		page() {
 			return store.pokemons.pages[this.direction];
+		},
+	},
+
+	methods: {
+		fetchPage() {
+			fetchPokemons(this.page);
 		},
 	},
 };
@@ -23,7 +29,7 @@ export default {
 
 <template>
 	<div
-		v-if="isVisible"
+		v-if="page"
 		@click="fetchPage"
 		:class="`arrow ${direction}`"></div>
 </template>

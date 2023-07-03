@@ -10,9 +10,12 @@ const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/
 
 export const fetchPokemons = (page = '') => {
 	store.isLoading = true;
+
+	const url = page ? endpoint + `?page=${page}` : endpoint;
+
 	axios
-		.get(`${endpoint}`)
-		.then(res => {
+		.get(url)
+		.then(async res => {
 			store.pokemons.list = res.data.docs;
 			store.pokemons.pages.prev = res.data.prevPage;
 			store.pokemons.pages.next = res.data.nextPage;
