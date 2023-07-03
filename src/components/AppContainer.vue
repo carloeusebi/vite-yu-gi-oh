@@ -14,7 +14,7 @@ export default {
 
 <template>
 	<div class="container">
-		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 gy-5">
+		<div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 gy-5">
 			<div
 				class="col"
 				v-for="pokemon in pokemons">
