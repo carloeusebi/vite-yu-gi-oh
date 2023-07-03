@@ -1,9 +1,19 @@
 <script>
-export default {};
+import { store } from '../assets/store';
+
+export default {
+	data() {
+		return {
+			store,
+		};
+	},
+};
 </script>
 
 <template>
-	<div class="layover">
+	<div
+		v-if="store.isLoading"
+		class="layover">
 		<figure>
 			<img
 				class="loader"

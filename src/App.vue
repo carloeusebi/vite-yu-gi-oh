@@ -11,14 +11,12 @@ export default {
 	data() {
 		return {
 			store,
-			isLoading: true,
 		};
 	},
 
 	methods: {
 		fetchPokemons() {
-			this.isLoading = true;
-
+			store.isLoading = true;
 			axios
 				.get(`${endpoint}`)
 				.then(res => {
@@ -31,7 +29,7 @@ export default {
 					console.error(e);
 				})
 				.then(() => {
-					// this.isLoading = false;
+					store.isLoading = false;
 				});
 		},
 	},

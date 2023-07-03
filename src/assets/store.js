@@ -1,6 +1,7 @@
 import { reactive } from 'vue';
 
 export const store = reactive({
+    isLoading: false,
     pokemons: {
         list: [],
         pages: {
@@ -8,5 +9,5 @@ export const store = reactive({
             next: null,
             current: 0
         }
-    }
+    },
 });
