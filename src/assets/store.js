@@ -8,6 +8,7 @@ export const store = reactive({
             prev: null,
             next: null,
             current: 0
-        }
+        },
+        types: []
     },
 });

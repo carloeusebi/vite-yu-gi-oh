@@ -8,14 +8,12 @@ import AppArrowButton from './components/AppArrowButton.vue';
 
 const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
 
-export const fetchPokemons = (page = '') => {
+const fetchPokemons = (page = '') => {
 	store.isLoading = true;
-
 	const url = page ? endpoint + `?page=${page}` : endpoint;
-
 	axios
 		.get(url)
-		.then(async res => {
+		.then(res => {
 			store.pokemons.list = res.data.docs;
 			store.pokemons.pages.prev = res.data.prevPage;
 			store.pokemons.pages.next = res.data.nextPage;
@@ -29,13 +27,19 @@ export const fetchPokemons = (page = '') => {
 		});
 };
 
-export default {
-	data() {
-		return {
-			store,
-		};
-	},
+const fetchPokemonsTypes = () => {
+	const url = endpoint + '/types1';
+	axios
+		.get(url)
+		.then(res => {
+			store.pokemons.types = res.data;
+		})
+		.catch(e => {
+			console.error(e);
+		});
+};
 
+export default {
 	methods: {
 		changePage(page) {
 			fetchPokemons(page);
@@ -46,6 +50,7 @@ export default {
 
 	created() {
 		fetchPokemons();
+		fetchPokemonsTypes();
 	},
 };
 </script>
