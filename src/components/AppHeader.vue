@@ -1,12 +1,13 @@
 <script>
 import { store } from '../assets/store';
 import AppSelectBox from './AppSelectBox.vue';
+import AppSearchBar from './AppSearchBar.vue';
 
 export default {
 	data() {
 		return store;
 	},
-	components: { AppSelectBox },
+	components: { AppSelectBox, AppSearchBar },
 	emits: ['selected-type-filter'],
 };
 </script>
@@ -17,6 +18,7 @@ export default {
 			class="logo"
 			src="pokemon.png"
 			alt="logo" />
+		<AppSearchBar classes="flex-grow-1 mx-5" />
 
 		<AppSelectBox
 			:options="pokemons.types"
