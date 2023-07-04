@@ -2,28 +2,19 @@
 import { store } from '../assets/store';
 
 export default {
-	data() {
-		return {
-			store,
-		};
-	},
-
 	props: {
 		direction: String,
 	},
-
 	computed: {
 		page() {
 			return store.pokemons.pages[this.direction];
 		},
 	},
-
 	methods: {
 		changePage() {
 			this.$emit('change-page', this.page);
 		},
 	},
-
 	emits: ['change-page'],
 };
 </script>

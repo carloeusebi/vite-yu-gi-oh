@@ -8,7 +8,7 @@ export default {
 		return store;
 	},
 	components: { AppSelectBox, AppSearchBar },
-	emits: ['selected-type-filter'],
+	emits: ['selected-type-filter', 'search'],
 };
 </script>
 
@@ -18,7 +18,10 @@ export default {
 			class="logo"
 			src="pokemon.png"
 			alt="logo" />
-		<AppSearchBar classes="flex-grow-1 mx-5" />
+		<AppSearchBar
+			classes="flex-grow-1 mx-5"
+			placeholder="Search a pokemon!"
+			@search="$emit('search', $event)" />
 
 		<AppSelectBox
 			:options="pokemons.types"

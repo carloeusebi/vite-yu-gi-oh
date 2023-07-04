@@ -3,16 +3,14 @@ import { store } from '../assets/store';
 
 export default {
 	data() {
-		return {
-			store,
-		};
+		return store;
 	},
 };
 </script>
 
 <template>
 	<div
-		v-if="store.isLoading"
+		v-if="isLoading"
 		class="layover">
 		<figure>
 			<img
