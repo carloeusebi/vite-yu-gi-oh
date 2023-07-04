@@ -1,6 +1,5 @@
 <script>
 import { store } from '../assets/store';
-import { fetchPokemons } from '../App.vue';
 
 export default {
 	data() {
@@ -20,17 +19,19 @@ export default {
 	},
 
 	methods: {
-		fetchPage() {
-			fetchPokemons(this.page);
+		changePage() {
+			this.$emit('change-page', this.page);
 		},
 	},
+
+	emits: ['change-page'],
 };
 </script>
 
 <template>
 	<div
 		v-if="page"
-		@click="fetchPage"
+		@click="changePage"
 		:class="`arrow ${direction}`"></div>
 </template>
 

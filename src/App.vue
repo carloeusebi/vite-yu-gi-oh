@@ -36,6 +36,12 @@ export default {
 		};
 	},
 
+	methods: {
+		changePage(page) {
+			fetchPokemons(page);
+		},
+	},
+
 	components: { AppArrowButton, AppContainer, AppHeader, AppLoader },
 
 	created() {
@@ -45,11 +51,15 @@ export default {
 </script>
 
 <template>
-	<AppArrowButton direction="prev" />
+	<AppArrowButton
+		direction="prev"
+		@change-page="changePage" />
 	<AppHeader />
 	<AppContainer />
 	<AppLoader />
-	<AppArrowButton direction="next" />
+	<AppArrowButton
+		direction="next"
+		@change-page="changePage" />
 </template>
 
 <style lang="scss"></style>
