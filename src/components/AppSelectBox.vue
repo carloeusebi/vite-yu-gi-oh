@@ -20,7 +20,7 @@ export default {
 	<select
 		v-model="selectedOption"
 		@change="$emit('selected-new-option', selectedOption)">
-		<option>{{ defaultOption }}</option>
+		<option value="">{{ defaultOption }}</option>
 		<option
 			v-for="option in options"
 			:key="option"

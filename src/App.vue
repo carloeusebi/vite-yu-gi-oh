@@ -8,25 +8,6 @@ import AppArrowButton from './components/AppArrowButton.vue';
 
 const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
 
-const fetchPokemons = (page = '') => {
-	store.isLoading = true;
-	const url = page ? endpoint + `?page=${page}` : endpoint;
-	axios
-		.get(url)
-		.then(res => {
-			store.pokemons.list = res.data.docs;
-			store.pokemons.pages.prev = res.data.prevPage;
-			store.pokemons.pages.next = res.data.nextPage;
-			store.pokemons.pages.current = res.data.page;
-		})
-		.catch(e => {
-			console.error(e);
-		})
-		.then(() => {
-			store.isLoading = false;
-		});
-};
-
 const fetchPokemonsTypes = () => {
 	const url = endpoint + '/types1';
 	axios
@@ -40,19 +21,48 @@ const fetchPokemonsTypes = () => {
 };
 
 export default {
-	methods: {
-		changePage(page) {
-			fetchPokemons(page);
-		},
-		fetchPokemonsByType(type) {
-			console.log(type);
-		},
+	data() {
+		return {
+			type: '',
+		};
 	},
 
+	methods: {
+		changePage(page) {
+			this.fetchPokemons(page);
+		},
+		changePokemonTypeFilter(newSelectedType) {
+			this.type = newSelectedType;
+			this.fetchPokemons();
+		},
+
+		fetchPokemons(page = '') {
+			store.isLoading = true;
+			let url = endpoint + '?';
+			if (this.type) url += `eq[type1]=${this.type}&`;
+			if (page) url += `page=${page}`;
+			console.log(url);
+			axios
+				.get(url)
+				.then(res => {
+					store.pokemons.list = res.data.docs;
+					store.pokemons.pages.prev = res.data.prevPage;
+					store.pokemons.pages.next = res.data.nextPage;
+					store.pokemons.pages.current = res.data.page;
+					console.log(res.data);
+				})
+				.catch(e => {
+					console.error(e);
+				})
+				.then(() => {
+					store.isLoading = false;
+				});
+		},
+	},
 	components: { AppArrowButton, AppContainer, AppHeader, AppLoader },
 
-	created() {
-		fetchPokemons();
+	mounted() {
+		this.fetchPokemons();
 		fetchPokemonsTypes();
 	},
 };
@@ -62,7 +72,7 @@ export default {
 	<AppArrowButton
 		direction="prev"
 		@change-page="changePage" />
-	<AppHeader @selected-type-filter="fetchPokemonsByType" />
+	<AppHeader @selected-type-filter="changePokemonTypeFilter" />
 	<AppContainer />
 	<AppLoader />
 	<AppArrowButton
