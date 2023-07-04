@@ -3,11 +3,13 @@ export default {
 	props: {
 		options: Array,
 	},
+	computed: {},
+	emits: ['selected-new-option'],
 };
 </script>
 
 <template>
-	<select>
+	<select @change="$emit('selected-new-option')">
 		<option
 			v-for="option in options"
 			:key="option">

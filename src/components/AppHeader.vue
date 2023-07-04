@@ -7,6 +7,11 @@ export default {
 		return store;
 	},
 	components: { AppSelectBox },
+	methods: {
+		changedTypesFilter() {
+			console.log('changed');
+		},
+	},
 };
 </script>
 
@@ -17,7 +22,9 @@ export default {
 			src="pokemon.png"
 			alt="logo" />
 
-		<AppSelectBox :options="pokemons.types" />
+		<AppSelectBox
+			:options="pokemons.types"
+			@selected-new-option="changedTypesFilter" />
 	</header>
 </template>
 
