@@ -1,5 +1,10 @@
 <script>
 export default {
+	data() {
+		return {
+			selectedOption: '',
+		};
+	},
 	props: {
 		options: Array,
 		defaultOption: {
@@ -12,7 +17,9 @@ export default {
 </script>
 
 <template>
-	<select @change="$emit('selected-new-option')">
+	<select
+		v-model="selectedOption"
+		@change="$emit('selected-new-option', selectedOption)">
 		<option>{{ defaultOption }}</option>
 		<option
 			v-for="option in options"

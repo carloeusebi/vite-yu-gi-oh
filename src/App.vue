@@ -44,6 +44,9 @@ export default {
 		changePage(page) {
 			fetchPokemons(page);
 		},
+		fetchPokemonsByType(type) {
+			console.log(type);
+		},
 	},
 
 	components: { AppArrowButton, AppContainer, AppHeader, AppLoader },
@@ -59,7 +62,7 @@ export default {
 	<AppArrowButton
 		direction="prev"
 		@change-page="changePage" />
-	<AppHeader />
+	<AppHeader @selected-type-filter="fetchPokemonsByType" />
 	<AppContainer />
 	<AppLoader />
 	<AppArrowButton

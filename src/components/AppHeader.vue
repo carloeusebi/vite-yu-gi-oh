@@ -7,11 +7,7 @@ export default {
 		return store;
 	},
 	components: { AppSelectBox },
-	methods: {
-		changedTypesFilter() {
-			console.log('changed');
-		},
-	},
+	emits: ['selected-type-filter'],
 };
 </script>
 
@@ -25,7 +21,7 @@ export default {
 		<AppSelectBox
 			:options="pokemons.types"
 			default-option="All Pokemon Types"
-			@selected-new-option="changedTypesFilter" />
+			@selected-new-option="$emit('selected-type-filter', $event)" />
 	</header>
 </template>
 
