@@ -36,6 +36,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../assets/sass/vars' as *;
 .arrow {
 	position: fixed;
 	top: 50%;
@@ -53,12 +54,12 @@ export default {
 	}
 }
 .next {
-	border-left: 90px solid #ffcc01;
+	border-left: 90px solid $pokemons-yellow;
 	right: 5rem;
 }
 
 .prev {
-	border-right: 90px solid #ffcc01;
+	border-right: 90px solid $pokemons-yellow;
 	left: 5rem;
 }
 </style>

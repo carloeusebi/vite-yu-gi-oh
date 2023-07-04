@@ -24,6 +24,7 @@ export default {
 
 		<AppSelectBox
 			:options="pokemons.types"
+			default-option="All Pokemon Types"
 			@selected-new-option="changedTypesFilter" />
 	</header>
 </template>
