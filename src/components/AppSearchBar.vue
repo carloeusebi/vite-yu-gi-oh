@@ -12,6 +12,7 @@ export default {
 			default: 'Search..',
 		},
 	},
+	emits: ['search'],
 };
 </script>
 
